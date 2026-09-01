@@ -6,8 +6,6 @@ const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
 
-const users = [];
-
 // Criar um novo usuário (POST)
 app.post('/usuarios', async (req, res) => {
 
@@ -23,7 +21,10 @@ app.post('/usuarios', async (req, res) => {
 });
 
 // Listar os usuários (GET)
-app.get('/usuarios', (req, res) => {
+app.get('/usuarios', async (req, res) => {
+
+    const users = await prisma.user.findMany();
+
     res.status(200).json(users);
 });
 

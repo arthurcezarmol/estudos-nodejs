@@ -1,6 +1,28 @@
 import './style.css'
+import Trash from '../../assets/trash.svg'    // Importando o ícone da lixeira
 
 function Home() {
+
+  // Simulando um array de usuários para exibir na tela (sem conectar com o back end)
+  const users = [{
+    id: 'placeholder',
+    name: 'Arthur',
+    age: 23,
+    email: 'arthur@email.com'
+  },
+  {
+    id: 'placeholder2',
+    name: 'Pedro',
+    age: 24,
+    email: 'pedro@email.com'
+  },
+  {
+    id: 'placeholder3',
+    name: 'Fábio',
+    age: 48,
+    email: 'fábio@email.com'
+  }
+  ]
 
   return (
     <>
@@ -13,9 +35,19 @@ function Home() {
           <button type="button">Cadastrar</button>
         </form>
 
-        <div>
-          
-        </div>
+        {users.map((user) => (
+          <div key={user.id} className="card">
+            <div>
+              <p>Nome:  <span>{user.name}</span></p>
+              <p>Idade: <span>{user.age}</span></p>
+              <p>Email: <span>{user.email}</span></p>
+            </div>
+            <button>
+              <img src={Trash} alt="Lixeira" />
+            </button>
+          </div>
+        ))}
+
       </div>
     </>
   )

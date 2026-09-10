@@ -1,10 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
 const app = express();
 app.use(express.json());
+app.use(cors());        // Configurando o CORS para permitir que o front end faça requisições para o back end
 
 // Criar um novo usuário (POST)
 app.post('/usuarios', async (req, res) => {
